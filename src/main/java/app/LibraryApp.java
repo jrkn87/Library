@@ -1,9 +1,10 @@
 package app;
 
 public class LibraryApp {
+    final static String APP_VER = "Library [v1.3]";
     public static void main(String[] args) {
-        final String appName = "Library [v0.9]";
-
+        System.out.println(APP_VER);
+        System.out.println("[---]");
         new LibraryService().loopControl();
     }
 }
