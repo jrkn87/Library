@@ -37,9 +37,9 @@ public class Magazine extends Publication {
     }
 
     public String printInfo() {
-        return "Magazine {" + super.printInfo()
+        return super.toString()
                 + "\', month: \'" + this.month
                 + "\', day: \'" + this.day
-                + "\', language: \'" + this.language + "\' }";
+                + "\', language: \'" + this.language + "\'}";
     }
 }

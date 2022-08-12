@@ -31,11 +31,10 @@ public class Book extends Publication {
         this.isbn = isbn;
     }
 
-    @Override
     public String printInfo() {
-        return "Book {" + super.printInfo()
+        return super.toString()
                 + "\', author: \'" + this.author
                 + "\', pages: \'" + this.pages
-                + "\', isbn: \'" + isbn + "\' }";
+                + "\', isbn: \'" + isbn + "\'}";
     }
 }

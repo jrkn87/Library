@@ -35,7 +35,11 @@ public class Publication {
         this.year = year;
     }
 
-    public String printInfo() {
-        return "Tile: \'" + this.title + "\', publisher: \'" + this.publisher + "\', year: \'" + this.year;
+    @Override
+    public String toString() {
+        return "{" +
+                "title='" + title + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", year=" + year;
     }
 }
