@@ -42,4 +42,7 @@ public class Publication {
                 ", publisher='" + publisher + '\'' +
                 ", year=" + year;
     }
+    public String printInfo() {
+        return super.toString();
+    }
 }

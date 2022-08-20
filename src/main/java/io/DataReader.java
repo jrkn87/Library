@@ -7,19 +7,26 @@ import java.util.Scanner;
 
 public class DataReader {
     Scanner input = new Scanner(System.in);
+    ConsolePrinter printer;
+
+    public DataReader(ConsolePrinter printer) {
+        this.printer = printer;
+    }
 
     public void close() {
         input.close();
     }
 
     public int nextInt() {
-        int i = input.nextInt();
-        input.nextLine();
-        return i;
+        try {
+            return input.nextInt();
+        } finally {
+            input.nextLine();
+        }
     }
 
     public Book readAndCreateBook() {
-        System.out.println("Add a new book:");
+        printer.printLine("Add a new book:");
         System.out.print("title:\t");
         String title = input.nextLine();
         System.out.print("author:\t");
@@ -32,12 +39,12 @@ public class DataReader {
             String publisher = input.nextLine();
         System.out.print("isbn:\t");
             String isbn =  input.nextLine();
-        System.out.println("The addition of a new book was successful.");
+        printer.printLine("The addition of a new book was successful.");
         return new Book(title, author, year, pages, publisher, isbn);
     }
 
     public Magazine readAndCreateMagazine() {
-        System.out.println("Add a new Magazine:");
+        printer.printLine("Add a new Magazine:");
         System.out.print("title:\t");
         String title = input.nextLine();
         System.out.print("publisher:\t");
@@ -50,7 +57,7 @@ public class DataReader {
         int day = nextInt();
         System.out.print("language:\t");
         String language =  input.nextLine();
-        System.out.println("The addition of a new magazine was successful.");
+        printer.printLine("The addition of a new magazine was successful.");
         return new Magazine(title, publisher, year, month, day, language);
     }
 }

@@ -1,5 +1,7 @@
 package app;
 
+import exception.NoSuchOptionException;
+
 public enum Option {
     EXIT(0,"exit application"),
     ADD_BOOK(1, "add new book"),
@@ -23,8 +25,12 @@ public enum Option {
         return description;
     }
 
-    public static Option valueOfInt(int i) {
-        return values()[i];
+    public static Option valueOfInt(int i) throws NoSuchOptionException {
+        try {
+            return values()[i];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new NoSuchOptionException("No such option " + i);
+        }
     }
 
     @Override

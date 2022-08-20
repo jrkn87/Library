@@ -1,47 +1,31 @@
 package model;
 
-import io.DataReader;
-
 public class Library {
     private static final int libraryCapacity = 1000;
-    private final Book[] books = new Book[libraryCapacity];
-    private final Magazine[] magazines = new Magazine[libraryCapacity];
-    private int booksNumber;
-    private int magazinesNumber;
+    private final Publication[] publications = new Publication[libraryCapacity];
+    private int publicationSize;
 
-    public void addBook(Book book) {
-        if (booksNumber < libraryCapacity) {
-            books[booksNumber] = book;
-            booksNumber++;
-        } else
-            System.err.println("Library capacity is full!");
+    public Publication[] getPublications() {
+        Publication[] result = new Publication[publicationSize];
+        for (int i = 0; i < publicationSize; i++) {
+            result[i] = publications[i];
+        }
+        return result;
     }
 
-    public void printBooks() {
-        if (booksNumber == 0)
-            System.err.println("Library is empty now!");
-        else {
-            for (int i = 0; i < booksNumber; i++) {
-                System.out.println(books[i].printInfo());
-            }
-        }
+    public void addBook(Book book) {
+        addPublication(book);
     }
 
     public void addMagazine(Magazine magazine) {
-        if (magazinesNumber < libraryCapacity) {
-            magazines[magazinesNumber] = magazine;
-            magazinesNumber++;
-        } else
-            System.err.println("Library capacity is full!");
+        addPublication(magazine);
     }
 
-    public void printMagazines() {
-        if (magazinesNumber == 0)
-            System.err.println("Library is empty now!");
-        else {
-            for (int i = 0; i < magazinesNumber; i++) {
-                System.out.println(magazines[i].printInfo());
-            }
-        }
+    private void addPublication(Publication publication) {
+        if (publicationSize == libraryCapacity)
+            throw new ArrayIndexOutOfBoundsException();
+
+        publications[publicationSize] = publication;
+        publicationSize++;
     }
 }
