@@ -1,17 +1,34 @@
 package app;
 
+import exception.ExportDataException;
+import exception.ImportDataException;
 import exception.NoSuchOptionException;
 import io.ConsolePrinter;
 import io.DataReader;
+import io.file.FileManager;
+import io.file.FileManagerService;
 import model.Library;
 
 import java.util.InputMismatchException;
 
 public class LibraryService {
     private Option option;
-    private final Library library = new Library();
     private final ConsolePrinter printer = new ConsolePrinter();
     private final DataReader dataReader = new DataReader(printer);
+    private Library library;
+    private FileManager fileManager;
+
+    public LibraryService() {
+        try {
+            fileManager = new FileManagerService(printer, dataReader).build();
+            library = fileManager.importData();
+            printer.printLine("Import data from file successful.");
+        } catch (ImportDataException e) {
+            printer.printLine(e.getMessage());
+            printer.printLine("Create new file to data.");
+            library = new Library();
+        }
+    }
 
     void loopControl() {
         do {
@@ -47,6 +64,12 @@ public class LibraryService {
     }
 
     private void exit() {
+        try{
+            fileManager.exportData(library);
+            printer.printLine("Data exported to file successful.");
+        } catch (ExportDataException e) {
+            printer.printLine(e.getMessage());
+        }
         printer.printLine("End of program, Bye!");
         dataReader.close();
     }

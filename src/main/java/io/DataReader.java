@@ -25,6 +25,10 @@ public class DataReader {
         }
     }
 
+    public String nextString() {
+        return input.nextLine();
+    }
+
     public Book readAndCreateBook() {
         printer.printLine("Add a new book:");
         System.out.print("title:\t");

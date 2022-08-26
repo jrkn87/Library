@@ -1,6 +1,8 @@
 package model;
 
-public class Library {
+import java.io.Serializable;
+
+public class Library implements Serializable {
     private static final int libraryCapacity = 1000;
     private final Publication[] publications = new Publication[libraryCapacity];
     private int publicationSize;

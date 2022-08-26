@@ -1,6 +1,8 @@
 package model;
 
-public class Publication {
+import java.io.Serializable;
+
+public  abstract class Publication implements Serializable {
     private String title;
     private String publisher;
     private int year;

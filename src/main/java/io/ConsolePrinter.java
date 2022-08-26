@@ -1,5 +1,6 @@
 package io;
 
+import io.file.FileType;
 import model.Book;
 import model.Magazine;
 import model.Publication;
@@ -28,6 +29,12 @@ public class ConsolePrinter {
         }
         if (count <= 0)
             printLine("Magazine list it's empty.");
+    }
+
+    public void printAllFileType() {
+        for (FileType value : FileType.values()) {
+            printLine(value.name());
+        }
     }
 
     public void printLine(String text) {
