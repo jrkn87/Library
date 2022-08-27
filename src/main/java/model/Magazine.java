@@ -1,6 +1,7 @@
 package model;
 
 public class Magazine extends Publication {
+    private static final String FILE_TYPE = "Magazine";
     private int month;
     private int day;
     private String language;
@@ -34,6 +35,17 @@ public class Magazine extends Publication {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    @Override
+    public String toCsv() {
+        return FILE_TYPE + ";"
+                +getTitle() + ";"
+                +getPublisher() + ";"
+                +getYear() + ";"
+                +month + ";"
+                +day + ";"
+                +language;
     }
 
     public String printInfo() {

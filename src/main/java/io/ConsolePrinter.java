@@ -33,11 +33,16 @@ public class ConsolePrinter {
 
     public void printAllFileType() {
         for (FileType value : FileType.values()) {
-            printLine(value.name());
+            printOneLine(value.name());
         }
     }
 
     public void printLine(String text) {
         System.out.println(text.toUpperCase());
+    }
+    public void printOneLine(String text) {
+        System.out.print("[ ");
+        System.out.print(text.toUpperCase());
+        System.out.print(" ]\n");
     }
 }

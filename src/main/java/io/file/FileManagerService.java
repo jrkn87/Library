@@ -17,6 +17,7 @@ public class FileManagerService {
         printer.printLine("Select file type:");
         return switch(getFileTypeFromUser()){
             case SERIAL -> new SerializableFileManager();
+            case CSV -> new CsvFileManager();
             default -> throw new FileTypeException("This type its not implemented yet.");
         };
     }

@@ -15,15 +15,7 @@ public class Library implements Serializable {
         return result;
     }
 
-    public void addBook(Book book) {
-        addPublication(book);
-    }
-
-    public void addMagazine(Magazine magazine) {
-        addPublication(magazine);
-    }
-
-    private void addPublication(Publication publication) {
+    public void addPublication(Publication publication) {
         if (publicationSize == libraryCapacity)
             throw new ArrayIndexOutOfBoundsException();
 

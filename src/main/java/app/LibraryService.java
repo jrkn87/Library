@@ -2,6 +2,7 @@ package app;
 
 import exception.ExportDataException;
 import exception.ImportDataException;
+import exception.InvalidFileTypeException;
 import exception.NoSuchOptionException;
 import io.ConsolePrinter;
 import io.DataReader;
@@ -23,7 +24,7 @@ public class LibraryService {
             fileManager = new FileManagerService(printer, dataReader).build();
             library = fileManager.importData();
             printer.printLine("Import data from file successful.");
-        } catch (ImportDataException e) {
+        } catch (ImportDataException | InvalidFileTypeException e) {
             printer.printLine(e.getMessage());
             printer.printLine("Create new file to data.");
             library = new Library();
@@ -76,7 +77,7 @@ public class LibraryService {
 
     private void addBook() {
         try {
-            library.addBook(dataReader.readAndCreateBook());
+            library.addPublication(dataReader.readAndCreateBook());
         } catch (InputMismatchException e) {
             printer.printLine("Error data, please try again.");
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -86,7 +87,7 @@ public class LibraryService {
 
     private void addMagazine() {
         try {
-            library.addMagazine(dataReader.readAndCreateMagazine());
+            library.addPublication(dataReader.readAndCreateMagazine());
         } catch (InputMismatchException e) {
             printer.printLine("Error data, please try again.");
         } catch (ArrayIndexOutOfBoundsException e) {

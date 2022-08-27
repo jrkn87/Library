@@ -1,6 +1,7 @@
 package model;
 
 public class Book extends Publication {
+    private static final String FILE_TYPE = "Book";
     private String author;
     private int pages;
     private String isbn;
@@ -29,6 +30,17 @@ public class Book extends Publication {
     }
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public String toCsv() {
+        return FILE_TYPE + ";"
+                +getTitle() + ";"
+                +author + ";"
+                +getYear() + ";"
+                +pages + ";"
+                +getPublisher() + ";"
+                +isbn;
     }
 
     public String printInfo() {
